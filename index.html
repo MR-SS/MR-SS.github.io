@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sajjad Rahim Nouri | Senior Product Security Engineer</title>
+    <meta name="description" content="Senior Product Security Engineer specializing in AppSec, DevSecOps, and Penetration Testing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        a { color: #00d4aa; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #00ffcc; }
+        img { max-width: 100%; display: block; }
+        ::selection { background: #00d4aa; color: #0a0a0f; }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #1e3a3a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00d4aa; }
+
+        /* ========== ANIMATED BG ========== */
+        #particles-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== NAV ========== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,212,170,0.1);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #00d4aa;
+            letter-spacing: 0.5px;
+        }
+        nav .logo span { color: #fff; }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+        nav ul li a {
+            color: #999;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+        nav ul li a:hover { color: #00d4aa; }
+        .nav-cta {
+            background: #00d4aa;
+            color: #0a0a0f !important;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .nav-cta:hover { background: #00ffcc; color: #0a0a0f !important; }
+        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: #e0e0e0; border-radius: 2px; }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+        }
+        .hero-content { max-width: 780px; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0,212,170,0.12);
+            border: 1px solid rgba(0,212,170,0.25);
+            color: #00d4aa;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .hero h1 .highlight { background: linear-gradient(135deg, #00d4aa, #00a3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        .hero .typing-wrapper {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 2rem;
+            min-height: 1.8rem;
+        }
+        .hero .typing-wrapper .cursor { color: #00d4aa; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #00d4aa;
+            color: #0a0a0f;
+        }
+        .btn-primary:hover { background: #00ffcc; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,212,170,0.25); }
+        .btn-secondary {
+            background: transparent;
+            color: #e0e0e0;
+            border: 1px solid #333;
+        }
+        .btn-secondary:hover { border-color: #00d4aa; color: #00d4aa; transform: translateY(-2px); }
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+        .hero-stats .stat { text-align: center; }
+        .hero-stats .stat .num { font-size: 1.8rem; font-weight: 800; color: #fff; }
+        .hero-stats .stat .label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ========== SECTION ========== */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00d4aa;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .section-desc {
+            color: #777;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4aa, transparent);
+            margin-bottom: 2.5rem;
+            border-radius: 2px;
+        }
+
+        /* ========== ABOUT ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-text p { color: #999; margin-bottom: 1rem; font-size: 0.95rem; }
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .about-highlights .item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .about-highlights .item .icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+        .about-highlights .item .val { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .about-highlights .item .lbl { font-size: 0.75rem; color: #666; }
+
+        /* ========== EXPERIENCE ========== */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4aa, #1a3a3a);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.45rem;
+            top: 0.3rem;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #00d4aa;
+            border: 3px solid #0a0a0f;
+            box-shadow: 0 0 0 2px #00d4aa;
+        }
+        .timeline-item .period {
+            font-size: 0.75rem;
+            color: #00d4aa;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-item h3 { font-size: 1.1rem; font-weight: 700; color: #fff; }
+        .timeline-item .company { color: #aaa; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .timeline-item ul { list-style: none; }
+        .timeline-item ul li {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .timeline-item ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00d4aa;
+        }
+        .timeline-item ul li strong { color: #ccc; }
+
+        /* ========== SKILLS ========== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        .skill-card:hover {
+            border-color: #00d4aa;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,212,170,0.08);
+        }
+        .skill-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #00d4aa;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag {
+            background: rgba(0,212,170,0.08);
+            border: 1px solid rgba(0,212,170,0.15);
+            color: #c0e0d8;
+            padding: 0.3rem 0.7rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.3s;
+        }
+        .skill-tag:hover { background: rgba(0,212,170,0.15); border-color: #00d4aa; }
+
+        /* ========== PROJECTS ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            border-color: #00d4aa;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,212,170,0.08);
+        }
+        .project-card .project-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .project-card h4 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+        .project-card .project-lang {
+            font-size: 0.7rem;
+            color: #00d4aa;
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 0.8rem;
+        }
+        .project-card p {
+            color: #888;
+            font-size: 0.85rem;
+            flex: 1;
+            margin-bottom: 1rem;
+        }
+        .project-card .project-links { display: flex; gap: 1rem; }
+        .project-card .project-links a {
+            font-size: 0.8rem;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .project-card .project-links a:hover { color: #00d4aa; }
+
+        /* ========== PUBLICATIONS ========== */
+        .pub-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        .pub-card:hover { border-color: #00d4aa; }
+        .pub-card .pub-venue {
+            font-size: 0.7rem;
+            color: #00d4aa;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+        .pub-card h4 { color: #fff; font-size: 1rem; margin-bottom: 0.3rem; }
+        .pub-card p { color: #888; font-size: 0.85rem; }
+
+        /* ========== EDUCATION ========== */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .edu-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        .edu-card:hover { border-color: #00d4aa; }
+        .edu-card .edu-degree { font-size: 0.8rem; color: #00d4aa; font-weight: 600; margin-bottom: 0.3rem; }
+        .edu-card h4 { color: #fff; font-size: 1rem; }
+        .edu-card .edu-school { color: #aaa; font-size: 0.85rem; }
+        .edu-card .edu-desc { color: #888; font-size: 0.8rem; margin-top: 0.5rem; }
+
+        /* ========== CONTACT ========== */
+        .contact-section {
+            text-align: center;
+            padding-bottom: 3rem;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            color: #ccc;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .contact-link:hover {
+            border-color: #00d4aa;
+            color: #00d4aa;
+            transform: translateY(-2px);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            font-size: 0.8rem;
+        }
+        footer a { color: #777; }
+        footer a:hover { color: #00d4aa; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hamburger { display: flex; }
+            nav ul.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0; right: 0;
+                background: rgba(10,10,15,0.97);
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(0,212,170,0.1);
+                gap: 1.2rem;
+            }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-highlights { grid-template-columns: 1fr 1fr; }
+            .edu-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+            section { padding: 3rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .about-highlights { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== PARTICLES CANVAS ===== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ===== NAV ===== -->
+    <nav>
+        <div class="logo">&lt;<span>SS</span>/&gt;</div>
+        <ul id="nav-menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🔒 Product Security Engineer</div>
+            <h1>Hi, I'm <span class="highlight">Sajjad Rahim Nouri</span></h1>
+            <p class="subtitle">Senior Product Security Engineer &middot; AppSec &middot; DevSecOps &middot; Penetration Testing</p>
+            <div class="typing-wrapper">
+                <span id="typed-text"></span><span class="cursor">|</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><div class="num">6+</div><div class="label">Years Exp.</div></div>
+                <div class="stat"><div class="num">14</div><div class="label">GitHub Followers</div></div>
+                <div class="stat"><div class="num">9</div><div class="label">Repositories</div></div>
+                <div class="stat"><div class="num">1</div><div class="label">ACM Publication</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+        <div class="section-label">// whoami</div>
+        <div class="section-divider"></div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    Senior Application Security Engineer with <strong>6+ years</strong> of experience across 
+                    <strong>Application Security</strong>, <strong>Product Security</strong>, <strong>DevSecOps</strong>, 
+                    and <strong>Cloud-Native Security</strong>.
+                </p>
+                <p>
+                    Specialized in designing and implementing Secure SDLC practices, embedding security controls 
+                    into CI/CD pipelines, performing web and mobile application security assessments, conducting 
+                    secure code reviews, and driving vulnerability management programs.
+                </p>
+                <p>
+                    Strong background in <strong>SAST</strong>, <strong>DAST</strong>, <strong>SCA</strong>, 
+                    software supply chain security, container and Kubernetes security, security automation, 
+                    and developer-focused security initiatives. Skilled in OWASP Top 10, ASVS, MASVS, WSTG, 
+                    Security Champions programs, and partnering with engineering teams to improve security 
+                    posture without slowing delivery velocity.
+                </p>
+            </div>
+            <div class="about-highlights">
+                <div class="item"><div class="icon">🛡️</div><div class="val">100+</div><div class="lbl">Vulnerabilities Remediated</div></div>
+                <div class="item"><div class="icon">📦</div><div class="val">12+</div><div class="lbl">Security Champions Teams</div></div>
+                <div class="item"><div class="icon">🔍</div><div class="val">50+</div><div class="lbl">Pentest Reports</div></div>
+                <div class="item"><div class="icon">⚡</div><div class="val">35%</div><div class="lbl">MTTR Reduction</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience">
+        <div class="section-label">// career</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-desc">A track record of securing high-traffic platforms and enterprise infrastructure.</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="period">Jan 2024 — Present</div>
+                <h3>Senior Application Security &amp; DevSecOps Engineer</h3>
+                <div class="company">TAPSI — High-Traffic Ride-Hailing Platform · Tehran, Iran (On-site)</div>
+                <ul>
+                    <li>Reduced <strong>MTTR by 35%</strong> across core product lines by architecting an automated Secure SDLC framework embedding SAST, DAST, and SCA gates (Semgrep, Trivy) directly into GitLab CI/CD pipelines.</li>
+                    <li>Increased <strong>developer-submitted security findings by 60%</strong> within two quarters by launching an enterprise Security Champions program across 12+ distributed engineering squads.</li>
+                    <li>Eliminated critical architecture-level vulnerabilities before production across 4 high-traffic platforms leading white-box and black-box penetration tests.</li>
+                    <li>Cut <strong>vulnerability triage overhead by 40%</strong> by engineering custom Python middleware and deploying DefectDojo on Kubernetes via Helm.</li>
+                    <li>Accelerated SLA compliance across 200+ inbound Bug Bounty reports with CVSS v3 severity-scoring escalation workflows.</li>
+                    <li>Strengthened software supply chain assurance by introducing <strong>SBOM</strong> generation and dependency provenance checks aligned with NIST SSDF.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <div class="period">Sep 2022 — Dec 2023</div>
+                <h3>Application &amp; Cloud Security Engineer</h3>
+                <div class="company">FANAP — Enterprise Cloud Infrastructure &amp; IT Solutions · Tehran, Iran (Hybrid)</div>
+                <ul>
+                    <li>Improved <strong>remediation effectiveness by 40%</strong> by conducting black-box and white-box penetration tests and delivering 50+ technical remediation reports.</li>
+                    <li>Reduced cloud misconfiguration risk implementing <strong>Zero Trust</strong> network segmentation, IaC security scanning (Terraform/Checkov), and Kubernetes security policies across OpenStack-based private cloud.</li>
+                    <li>Accelerated secure delivery for 6+ product teams by architecting DevSecOps pipelines with continuous SAST, DAST, SCA, container image analysis, and IAM access-control reviews.</li>
+                    <li>Raised <strong>developer security awareness 3x</strong> by designing and delivering secure-coding workshops and threat modeling sessions.</li>
+                    <li>Established security-metrics dashboards tracking vulnerability density, exposure age, and SLA compliance supporting SOC 2 / ISO 27001 readiness.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <div class="period">Oct 2020 — Aug 2022</div>
+                <h3>Full-Stack &amp; DevOps Engineer (Part-Time / Contract)</h3>
+                <div class="company">Independent Contract Work · Remote</div>
+                <ul>
+                    <li>Delivered <strong>8+ production web applications</strong> on time managing full project lifecycles from architecture to deployment.</li>
+                    <li>Improved deployment reliability for 4 clients by automating CI/CD pipelines with Docker-based containerization, cutting <strong>average deployment time by 50%</strong>.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <div class="period">Nov 2019 — Oct 2020</div>
+                <h3>Penetration Tester</h3>
+                <div class="company">Golestan Security CERT (APA) · Golestan Province, Iran</div>
+                <ul>
+                    <li>Prevented <strong>100+ vulnerabilities</strong> from reaching production across 30+ enterprise web applications and network environments.</li>
+                    <li>Reduced average incident triage time by analyzing emerging attack vectors and contributing threat intelligence findings to the regional CERT incident-response team.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+        <div class="section-label">// tools</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Skills &amp; Expertise</h2>
+        <p class="section-desc">Technologies and methodologies I work with daily.</p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4>🛡️ AppSec &amp; Pentest</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Web Pentesting</span>
+                    <span class="skill-tag">Android Pentesting</span>
+                    <span class="skill-tag">White-Box Testing</span>
+                    <span class="skill-tag">Source Code Review</span>
+                    <span class="skill-tag">API Security</span>
+                    <span class="skill-tag">OWASP Top 10</span>
+                    <span class="skill-tag">ASVS</span>
+                    <span class="skill-tag">WSTG</span>
+                    <span class="skill-tag">MASVS</span>
+                    <span class="skill-tag">Burp Suite Pro</span>
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">ffuf</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">MobSF</span>
+                    <span class="skill-tag">Nuclei</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h4>⚙️ DevSecOps &amp; CI/CD</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Secure SDLC</span>
+                    <span class="skill-tag">GitLab CI/CD</span>
+                    <span class="skill-tag">SAST</span>
+                    <span class="skill-tag">DAST</span>
+                    <span class="skill-tag">SCA</span>
+                    <span class="skill-tag">SBOM</span>
+                    <span class="skill-tag">Container Security</span>
+                    <span class="skill-tag">Secret Detection</span>
+                    <span class="skill-tag">Semgrep</span>
+                    <span class="skill-tag">Trivy</span>
+                    <span class="skill-tag">DefectDojo</span>
+                    <span class="skill-tag">Jenkins</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h4>☁️ Cloud &amp; Infra Security</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Kubernetes (K8s)</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Helm</span>
+                    <span class="skill-tag">OpenStack</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Checkov</span>
+                    <span class="skill-tag">mTLS</span>
+                    <span class="skill-tag">Zero Trust</span>
+                    <span class="skill-tag">AWS (Familiar)</span>
+                    <span class="skill-tag">Infra Hardening</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h4>📊 Governance &amp; Ops</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Security Champions</span>
+                    <span class="skill-tag">Bug Bounty Mgmt</span>
+                    <span class="skill-tag">Vuln Management</span>
+                    <span class="skill-tag">Security Metrics</span>
+                    <span class="skill-tag">Threat Modeling</span>
+                    <span class="skill-tag">Security Awareness</span>
+                    <span class="skill-tag">SLA Compliance</span>
+                    <span class="skill-tag">SOC 2 Readiness</span>
+                    <span class="skill-tag">ISO 27001 Readiness</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h4>💻 Engineering</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Backend Development</span>
+                    <span class="skill-tag">Clean Architecture</span>
+                    <span class="skill-tag">Distributed Systems</span>
+                    <span class="skill-tag">Federated Learning</span>
+                    <span class="skill-tag">Secure Design</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h4>🌐 Languages</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">English (Professional)</span>
+                    <span class="skill-tag">Persian (Native)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+        <div class="section-label">// repos</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-desc">Open-source contributions and tools I've built.</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon">🔐</div>
+                <h4>DevSecOps-Pipeline-Hub</h4>
+                <div class="project-lang">HCL · DevSecOps</div>
+                <p>A continuously evolving repository of GitLab CI/CD templates for automated security scanning, integrated with DefectDojo.</p>
+                <div class="project-links">
+                    <a href="https://github.com/MR-SS/DevSecOps-Pipeline-Hub" target="_blank">🔗 GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">🧩</div>
+                <h4>8puzzle-problem</h4>
+                <div class="project-lang">Python</div>
+                <p>Solve the classic 8-puzzle problem using the A* search algorithm with heuristic optimization.</p>
+                <div class="project-links">
+                    <a href="https://github.com/MR-SS/8puzzle-problem" target="_blank">🔗 GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">🎫</div>
+                <h4>Challenge — Coupon System</h4>
+                <div class="project-lang">Python · FastAPI</div>
+                <p>A super secure gift coupon system with JWT authentication, Redis throttling, user action logging, and full Docker support.</p>
+                <div class="project-links">
+                    <a href="https://github.com/MR-SS/challenge" target="_blank">🔗 GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">📚</div>
+                <h4>Bug Bounty References</h4>
+                <div class="project-lang">Security Research</div>
+                <p>A curated collection of useful write-ups, hints, and references about web security and bug bounty hunting.</p>
+                <div class="project-links">
+                    <a href="https://github.com/MR-SS/Bug_bounty_references" target="_blank">🔗 GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">☁️</div>
+                <h4>Cloud Penetration Testing</h4>
+                <div class="project-lang">Security Research</div>
+                <p>A curated list of cloud pentesting resources covering AWS, Azure, and Google Cloud platforms.</p>
+                <div class="project-links">
+                    <a href="https://github.com/MR-SS/cloud-penetration-testing" target="_blank">🔗 GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">🔍</div>
+                <h4>Semgrep Rules</h4>
+                <div class="project-lang">HCL · SAST</div>
+                <p>Community Edition Semgrep rules for security-focused static analysis maintained by Semgrep and the community.</p>
+                <div class="project-links">
+                    <a href="https://github.com/MR-SS/semgrep-rules" target="_blank">🔗 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <section id="publications">
+        <div class="section-label">// research</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Publications</h2>
+        <p class="section-desc">Academic research and contributions to the security community.</p>
+        <div class="pub-card">
+            <div class="pub-venue">ACM · 2024</div>
+            <h4>MoreFixes: A Large-Scale Dataset of CVE Fix Commits Mined Through Enhanced Repository Discovery</h4>
+            <p>
+                Co-authored a programming-language-independent vulnerability dataset of <strong>26,617 unique CVEs</strong> 
+                from <strong>6,945 GitHub projects</strong>, built via a novel heuristic workflow to support ML-based 
+                vulnerability detection and patching research.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+        <div class="section-label">// education</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Education</h2>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <div class="edu-degree">🎓 M.Sc. Computer Software Engineering</div>
+                <h4>Islamic Azad University, Mazandaran, Iran</h4>
+                <div class="edu-school">Sep 2022 — Present</div>
+                <div class="edu-desc">
+                    Thesis: <em>"Leveraging Federated Learning for Enhanced Cyber Attack Prediction"</em> — a decentralized 
+                    ML framework optimized for proactive DDoS attack prediction. Coursework: Software Architecture, 
+                    Distributed Systems, Data Mining, Network Security.
+                </div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-degree">🎓 B.Sc. Computer Engineering</div>
+                <h4>Golestan University, Gorgan, Iran</h4>
+                <div class="edu-school">Sep 2016 — Sep 2020</div>
+                <div class="edu-desc">
+                    Focused on software engineering fundamentals, network security, and secure application architecture; 
+                    graduation project on application vulnerability analysis and secure coding.
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 2rem;">
+            <div class="pub-card">
+                <div class="pub-venue">🏆 CTF</div>
+                <h4>Top CTF Teams in Iran (2023)</h4>
+                <p>Ranked <strong>Top 2</strong> for 3 consecutive years — <a href="https://ctftime.org/team/222060" target="_blank">ctftime.org/team/222060</a></p>
+            </div>
+            <div class="pub-card">
+                <div class="pub-venue">🏆 Hackathon</div>
+                <h4>Quera Security Hackathon (2023)</h4>
+                <p>Recognized as a <strong>Top Hacker</strong> — <a href="https://quera.org/certificate/NrdmJHEs" target="_blank">quera.org/certificate/NrdmJHEs</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact-section">
+        <div class="section-label">// connect</div>
+        <div class="section-divider" style="margin: 0 auto 2rem;"></div>
+        <h2 class="section-title">Let's Connect</h2>
+        <p style="color: #888; max-width: 500px; margin: 0 auto 1rem;">
+            Interested in security, DevSecOps, or collaboration? Feel free to reach out.
+        </p>
+        <div class="contact-links">
+            <a href="/cdn-cgi/l/email-protection#c8bba9a2a2a9acbaa9a0a1a5a6a7bdbaa188afa5a9a1a4e6aba7a5" class="contact-link">📧 Email</a>
+            <a href="https://github.com/MR-SS" target="_blank" class="contact-link">🐙 GitHub</a>
+            <a href="https://www.linkedin.com/in/sajjad-rahim-nouri-b1702519a/" target="_blank" class="contact-link">💼 LinkedIn</a>
+            <a href="tel:+989117338847" class="contact-link">📞 +98 911 733 8847</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2026 <a href="https://github.com/MR-SS">Sajjad Rahim Nouri</a> · Built with 🔒 and ☕</p>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ---- Particles ----
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = document.documentElement.scrollHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.4 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 212, 170, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (const p of particles) {
+                p.update();
+                p.draw();
+            }
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 212, 170, ${0.06 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Recalculate canvas height on scroll/resize
+        const resizeObserver = new ResizeObserver(() => resizeCanvas());
+        resizeObserver.observe(document.body);
+
+        // ---- Typing Effect ----
+        const phrases = [
+            'Securing high-traffic platforms at TAPSI 🚗',
+            'Building DevSecOps pipelines with GitLab CI/CD ⚡',
+            'CTF competitor · Top 2 in Iran 🇮🇷',
+            'ACM published researcher 📄',
+            'Open-source contributor & security advocate 🔓'
+        ];
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typedEl = document.getElementById('typed-text');
+
+        function typeEffect() {
+            const current = phrases[phraseIdx];
+            if (isDeleting) {
+                typedEl.textContent = current.substring(0, charIdx--);
+                if (charIdx < 0) {
+                    isDeleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                    setTimeout(typeEffect, 500);
+                    return;
+                }
+                setTimeout(typeEffect, 30);
+            } else {
+                typedEl.textContent = current.substring(0, charIdx++);
+                if (charIdx > current.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                    return;
+                }
+                setTimeout(typeEffect, 60);
+            }
+        }
+        typeEffect();
+
+        // ---- Smooth Scroll for nav links ----
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Close mobile menu
+                document.getElementById('nav-menu').classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
