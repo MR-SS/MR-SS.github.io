@@ -694,38 +694,82 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+        <div class="section-label">// portfolio</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-desc">Selected security tools, automation scripts, and research projects.</p>
+        <div class="projects-grid">
+            <!-- Project 1: The CVE -->
+            <div class="project-card">
+                <div class="project-icon">🛡️</div>
+                <h4>pypdf Memory Exhaustion (CVE)</h4>
+                <div class="project-lang">Python · OSS-Fuzz · Security Research</div>
+                <p>Discovered a CWE-789 vulnerability in pypdf via structure-aware fuzzing. Developed a custom harness with RLIMIT_AS to catch unbounded memory allocation.</p>
+                <div class="project-links">
+                    <a href="https://github.com/py-pdf/pypdf/security/advisories/GHSA-5qjq-93h5-hrgp" target="_blank">Advisory ↗</a>
+                    <a href="https://mr-ss.github.io/writeups/pypdf-cve-2026.html" target="_blank">Write-up ↗</a>
+                </div>
+            </div>
+            
+            <!-- Project 2: DevSecOps Automation -->
+            <div class="project-card">
+                <div class="project-icon">⚙️</div>
+                <h4>Automated Secure SDLC Pipeline</h4>
+                <div class="project-lang">Python · GitLab CI/CD · Kubernetes</div>
+                <p>Architected an automated vulnerability management pipeline integrating Semgrep, Trivy, and DefectDojo, reducing MTTR by 35% across core product lines.</p>
+                <div class="project-links">
+                    <a href="#experience">Details in Experience ↗</a>
+                </div>
+            </div>
+
+            <!-- Project 3: MoreFixes Dataset -->
+            <div class="project-card">
+                <div class="project-icon">📊</div>
+                <h4>MoreFixes: CVE Dataset</h4>
+                <div class="project-lang">Data Mining · GitHub API · Research</div>
+                <p>Co-authored a programming-language-independent vulnerability dataset of 26,617 unique CVEs from 6,945 GitHub projects for ML-based patching research.</p>
+                <div class="project-links">
+                    <a href="#publications">ACM Publication ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== PUBLICATIONS ===== -->
     <section id="publications">
         <div class="section-label">// research</div>
-        
-            <div class="pub-card" style="margin-top:1.5rem; background:var(--surface2); border-radius:12px; padding:1.5rem; border:1px solid rgba(0,212,170,0.1);">
+        <div class="pub-card" style="margin-top:1.5rem; background:rgba(255,255,255,0.02); border-radius:12px; padding:1.5rem; border:1px solid rgba(0,212,170,0.1);">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
                 <div>
-                <div style="font-size:0.75rem; color:var(--accent); font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.5rem;">
+                <div style="font-size:0.75rem; color:#00d4aa; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.5rem;">
                     🛡️ Security Advisory · CVE Writeup
                 </div>
                 <h3 style="color:#fff; font-size:1.1rem; margin-bottom:0.5rem;">
                     Memory Exhaustion in pypdf via Structure-Aware Fuzzing (GHSA-5qjq-93h5-hrgp)
                 </h3>
-                <p style="color:var(--text-dim); font-size:0.85rem; line-height:1.6;">
+                <p style="color:#888; font-size:0.85rem; line-height:1.6;">
                     Discovered a CWE-789 vulnerability in pypdf &lt; 6.14.0 allowing unbounded memory
                     allocation via crafted image dimensions. Found using a custom OSS-Fuzz harness
                     with RLIMIT_AS capping and structure-aware PDF mutation.
                 </p>
                 <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.8rem;">
                     <span style="background:rgba(255,107,107,0.12); color:#ff6b6b; border:1px solid rgba(255,107,107,0.3); border-radius:4px; padding:2px 8px; font-size:0.7rem; font-weight:700;">CWE-789</span>
-                    <span style="background:rgba(0,212,170,0.12); color:var(--accent); border:1px solid rgba(0,212,170,0.3); border-radius:4px; padding:2px 8px; font-size:0.7rem; font-weight:600;">pypdf &lt; 6.14.0</span>
-                    <span style="background:rgba(255,160,107,0.12); color:var(--orange); border:1px solid rgba(255,160,107,0.3); border-radius:4px; padding:2px 8px; font-size:0.7rem; font-weight:600;">DoS</span>
+                    <span style="background:rgba(0,212,170,0.12); color:#00d4aa; border:1px solid rgba(0,212,170,0.3); border-radius:4px; padding:2px 8px; font-size:0.7rem; font-weight:600;">pypdf &lt; 6.14.0</span>
+                    <span style="background:rgba(255,160,107,0.12); color:#ffa06b; border:1px solid rgba(255,160,107,0.3); border-radius:4px; padding:2px 8px; font-size:0.7rem; font-weight:600;">DoS</span>
                 </div>
                 </div>
             </div>
             <div style="margin-top:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
-                <a href="https://github.com/py-pdf/pypdf/security/advisories/GHSA-5qjq-93h5-hrgp" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.85rem; font-weight:600;">📄 Advisory →</a>
-                <a href="writeups/pypdf-cve-2026.html" style="color:var(--accent); text-decoration:none; font-size:0.85rem; font-weight:600;">📝 Full Writeup →</a>
-                <a href="https://github.com/MR-SS" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.85rem; font-weight:600;">💻 OSS-Fuzz Harness →</a>
+                <a href="https://github.com/py-pdf/pypdf/security/advisories/GHSA-5qjq-93h5-hrgp" target="_blank" style="color:#00d4aa; text-decoration:none; font-size:0.85rem; font-weight:600;">📄 Advisory →</a>
+                <a href="https://mr-ss.github.io/writeups/pypdf-cve-2026.html" target="_blank" style="color:#00d4aa; text-decoration:none; font-size:0.85rem; font-weight:600;">📝 Full Writeup →</a>
+                <a href="https://github.com/MR-SS" target="_blank" style="color:#00d4aa; text-decoration:none; font-size:0.85rem; font-weight:600;">💻 OSS-Fuzz Harness →</a>
             </div>
-            </div>
-                    <div class="section-divider"></div>
+        </div>
+        
+        <div class="section-divider" style="margin-top: 2rem;"></div>
         <h2 class="section-title">Publications</h2>
         <p class="section-desc">Academic research and contributions to the security community.</p>
         <div class="pub-card">
@@ -801,7 +845,7 @@
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // ---- Particles ----
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -907,8 +951,8 @@
         }
         typeEffect();
 
-        // ---- Smooth Scroll for nav links ----
-        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+        // ---- Smooth Scroll for ALL anchor links (Fixed) ----
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
                 const target = document.querySelector(link.getAttribute('href'));
@@ -916,7 +960,8 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
                 // Close mobile menu
-                document.getElementById('nav-menu').classList.remove('open');
+                const navMenu = document.getElementById('nav-menu');
+                if (navMenu) navMenu.classList.remove('open');
             });
         });
     </script>
